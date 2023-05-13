@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Partidos</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        /* Estilos para agregar espacio entre partidos */
+        .partido-container {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para resaltar los partidos */
+        .partido {
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .partido:hover {
+            background-color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Partidos</h1>
+
+    <div id="partidos-container">
+        {% for partido in partidos %}
+            <div class="partido-container">
+                <table class="partido">
+                    <thead>
+                        <tr>
+                            <th>Equipo Local (Goles)</th>
+                            <th>Equipo Visitante (Goles)</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {% if partido.equipo_local.imagen %}
+                                    <img src="{{ partido.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                                {% endif %}
+                                {{ partido.equipo_local.nombre }} ({{ partido.goles_local }})
+                            </td>
+                            <td>
+                                {% if partido.equipo_visitante.imagen %}
+                                    <img src="{{ partido.equipo_visitante.imagen.url }}" alt="" class="equipo-img">
+                                {% endif %}
+                                {{ partido.equipo_visitante.nombre }} ({{ partido.goles_visitante }})
+                            </td>
+                            <td>{{ partido.fecha }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
