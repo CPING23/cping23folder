@@ -1,11 +1,14 @@
+{% include "cabecera.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Tabla de Posiciones</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
 </head>
 <body>
+    <section class="courses-section spad">
+    <div class="container">
     <h1>Tabla de Posiciones</h1>
 
     <table id="tabla-posiciones">
@@ -38,6 +41,10 @@
             {% endfor %}
         </tbody>
     </table>
-<script src="{% static "js/script.js" %}"></script>
+    </div>
+    </section>
+
+{% include "pie_pagina.html" %}
+<script src="{% static "js/cupingjs/script.js" %}"></script>
 </body>
 </html>
