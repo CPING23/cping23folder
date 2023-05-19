@@ -9,13 +9,12 @@
 <body>
     <section class="courses-section spad">
     <div class="container">
-    <h1>Tabla de Posiciones</h1>
+    <h3>TABLA DE POSICIONES - COPA INGE 2023</h3>
 
-
-    <table id="tabla-posiciones">
+    <table id="tabla-posiciones" >
         <thead>
             <tr>
-                <th>Equipo</th>
+                <th>&nbsp;&nbsp;&nbsp;EQUIPO</th>
                 <th>PUNTOS</th>
                 <th>PJ</th>
                 <th>PG</th>
@@ -23,21 +22,21 @@
                 <th>PP</th>
                 <th>GF</th>
                 <th>GC</th>
-                <th>DG</th>
+                <th >DG</th>
             </tr>
         </thead>
         <tbody>
             {% for posicion in posiciones %}
                 <tr>
-                    <td><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img">{{ posicion.equipo.nombre }}</td>
-                    <td>{{ posicion.puntos }}</td>
+                    <td ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img">{{ posicion.equipo.nombre }}</td>
+                    <td >{{ posicion.puntos }}</td>
                     <td>{{ posicion.partidos_jugados }}</td>
                     <td>{{ posicion.partidos_ganados }}</td>
                     <td>{{ posicion.partidos_empatados }}</td>
                     <td>{{ posicion.partidos_perdidos }}</td>
                     <td>{{ posicion.goles_favor }}</td>
                     <td>{{ posicion.goles_contra }}</td>
-                    <td>{{ posicion.diferencia_goles }}</td>
+                    <td >{{ posicion.diferencia_goles }}</td>
                 </tr>
             {% endfor %}
         </tbody>
