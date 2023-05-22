@@ -46,7 +46,7 @@
         <div class="match">
             <div class="match-header">
                 <div class="match-status">En Vivo</div>
-                <div class="match-tournament"><img src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>
+                <div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>
                 <div class="match-actions">
                     <button class="btn-icon"><i class="material-icons-outlined">10</i></button>
                     <button class="btn-icon"><i class="material-icons-outlined">/</i></button>
@@ -63,7 +63,7 @@
                     <div class="team team--home">
                         <div class="team-logo">
                             {% if partido.equipo_local.imagen %}
-                                    <img src="{{ partido.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                                    <img  src="{{ partido.equipo_local.imagen.url }}" alt="" class="img-stylecup equipo-img">
                             {% endif %}
                         </div>
                         <h2 class="team-name">{{ partido.equipo_local.nombre }}</h2>
@@ -104,7 +104,7 @@
                     <div class="team team--away">
                         <div class="team-logo">
                             {% if partido.equipo_visitante.imagen %}
-                                    <img src="{{ partido.equipo_visitante.imagen.url }}" alt="" class="equipo-img">
+                                    <img src="{{ partido.equipo_visitante.imagen.url }}" alt="" class="img-stylecup equipo-img">
                             {% endif %}
                         </div>
                         <h2 class="team-name">{{ partido.equipo_visitante.nombre }}</h2>
