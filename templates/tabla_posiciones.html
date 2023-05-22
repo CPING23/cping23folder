@@ -7,9 +7,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
 </head>
 <body>
-    <section class="courses-section spad">
+
+     <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
     <div class="container">
-    <h3>TABLA DE POSICIONES - COPA INGE 2023</h3>
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a> </li>
+      <li class="breadcrumb-item active">Tabla de Posiciones</li>
+    </ol>
+    </div>
+
+
+    <section class="full-courses-section spad pt-0">
+    <div class="container">
+    <h3 class="h3-stylecup">TABLA DE POSICIONES - COPA INGE 2023</h3>
 
     <table id="tabla-posiciones" >
         <thead>
@@ -28,7 +42,7 @@
         <tbody>
             {% for posicion in posiciones %}
                 <tr>
-                    <td ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img">{{ posicion.equipo.nombre }}</td>
+                    <td ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">{{ posicion.equipo.nombre }}</td>
                     <td >{{ posicion.puntos }}</td>
                     <td>{{ posicion.partidos_jugados }}</td>
                     <td>{{ posicion.partidos_ganados }}</td>
@@ -41,6 +55,8 @@
             {% endfor %}
         </tbody>
     </table>
+        </div>
+
     </div>
     </section>
 
