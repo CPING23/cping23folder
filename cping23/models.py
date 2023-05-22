@@ -14,6 +14,42 @@ class Partido(models.Model):
     equipo_visitante = models.ForeignKey(Equipo, on_delete=models.CASCADE, related_name='partidos_visitante')
     goles_local = models.PositiveIntegerField()
     goles_visitante = models.PositiveIntegerField()
+    fecha = models.DateTimeField(blank=True, null=True)
+    partido_numero = models.CharField(max_length=100, blank=True, null=True)
+    fase_partido = models.CharField(max_length=100, blank=True, null=True)
+
+
+class Gol_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    jugador = models.CharField(max_length=100)
+    minuto = models.PositiveIntegerField()
+
+class Gol_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    jugador = models.CharField(max_length=100)
+    minuto = models.PositiveIntegerField()
+
+
+class Tarjetaroja_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    jugador = models.CharField(max_length=100)
+    minuto = models.PositiveIntegerField()
+
+class Tarjetaroja_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    jugador = models.CharField(max_length=100)
+    minuto = models.PositiveIntegerField()
+
+
+class Tarjetaamarilla(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
+    jugador = models.CharField(max_length=100)
+    minuto = models.PositiveIntegerField()
 
 
 

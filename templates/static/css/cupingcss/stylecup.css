@@ -3,6 +3,8 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
 
 }
 
@@ -33,7 +35,7 @@ tr:hover {
 
 
 
-h3 {
+.h3-stylecup{
   text-align: center;
   margin-bottom: 20px;
 }
@@ -48,7 +50,25 @@ h3 {
     height: 30px;
     margin-right: 20px;
     margin-left: 10px;
+
 }
+
+.redcard-icon {
+  font-size: 10px, 10px;
+  color: red;
+  background-color: red;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+}
+
+.yellowcard-icon {
+  font-size: 10px, 10px;
+  color: yellow;
+  background-color: yellow;
+  border-radius: 2px;
+  box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
+}
+
 
 *,
 *:after,
@@ -60,9 +80,9 @@ h3 {
 	--color-text-primary: #1c2a38;
 	--color-text-secondary: #8A8F98;
 	--color-text-alert: #d72641;
-	--color-text-icon: #dbdade;
-	--color-bg-primary: #fff;
-	--color-bg-secondary: #f3f5f9;
+	--color-text-icon: #808080;
+	--color-bg-primary: #f7f7f7;
+	--color-bg-secondary: #ffffff;
 	--color-bg-alert: #fdeaec;
 	--color-theme-primary: #623ce6;
 }
@@ -240,8 +260,10 @@ body {
 	margin-right: 10px;
 }
 
+
+
 .match-time-lapsed {
-	color: #DF9443;
+	color: black;
 	font-size: 14px;
 	font-weight: 600;
 	margin-top: 8px;

@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Partidos</title>
+    <title>Resultados</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+
     <style>
         /* Estilos para agregar espacio entre partidos */
         .partido-container {
@@ -25,9 +26,21 @@
 </head>
 <body>
 
+    <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a></li>
+      <li class="breadcrumb-item active">Resultados</li>
+    </ol>
+    </div>
+
     <!--Código Nuevo-->
-    <section class="courses-section spad">
-        <h3>RESULTADOS DE FÚTBOL</h3>
+    <section class="full-courses-section spad pt-0">
+        <h3 class="h3-stylecup">RESULTADOS DE FÚTBOL</h3>
          <div class="containerp">
         <!-- code here -->
         <div class="match">
@@ -54,6 +67,16 @@
                             {% endif %}
                         </div>
                         <h2 class="team-name">{{ partido.equipo_local.nombre }}</h2>
+                        <div class="match-time-lapsed" >
+                            {% for gol_local in partido.gol_local_set.all %}
+                                        <i class="fa fa-soccer-ball-o" ></i> {{ gol_local.jugador }} '{{ gol_local.minuto }}<br>
+                                    {% endfor %}
+                        </div>
+                        <div class="match-time-lapsed" >
+                            {% for tarjetaroja_local in partido.tarjetaroja_local_set.all %}
+                                        <i class="fas fa-square redcard-icon " ></i> {{ tarjetaroja_local.jugador }} '{{ tarjetaroja_local.minuto }}<br>
+                                    {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="column">
@@ -66,17 +89,14 @@
                             <span class="match-score-divider">:</span>
                             <span class="match-score-number">{{ partido.goles_visitante }}</span>
                         </div>
-                        <div class="match-time-lapsed">
-                            72'
-                        </div>
                         <div class="match-referee">
-                            Referee: <strong>Ambrosio Cubilla</strong>
+                            {{ partido.partido_numero }}: <strong>{{ partido.fase_partido }}</strong>
                         </div>
-                        <div class="match-bet-options">
+                        <!--<div class="match-bet-options">
                             <button class="match-bet-option">1.48</button>
                             <button class="match-bet-option">4.98</button>
                             <button class="match-bet-option">8.24</button>
-                        </div>
+                        </div>-->
                         <button class="match-bet-place">RESUMEN</button>
                     </div>
                 </div>
@@ -88,10 +108,21 @@
                             {% endif %}
                         </div>
                         <h2 class="team-name">{{ partido.equipo_visitante.nombre }}</h2>
+                        <div class="match-time-lapsed" >
+                            {% for gol_vistante in partido.gol_visitante_set.all %}
+                                        <i class="fa fa-soccer-ball-o" ></i> {{ gol_vistante.jugador }} '{{ gol_vistante.minuto }}<br>
+                                    {% endfor %}
+                        </div>
+                        <div class="match-time-lapsed" >
+                            {% for tarjetaroja_visitante in partido.tarjetaroja_visitante_set.all %}
+                                        <i class="fas fa-square redcard-icon " ></i> {{ tarjetaroja_visitante.jugador }} '{{ tarjetaroja_visitante.minuto }}<br>
+                                    {% endfor %}
+                        </div>
+
                     </div>
                 </div>
 
-            </div>
+            </div><br><br>
             {% endfor %}
         </div>
     </div>
