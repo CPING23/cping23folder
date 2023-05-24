@@ -18,6 +18,11 @@ class Partido(models.Model):
     partido_numero = models.CharField(max_length=100, blank=True, null=True)
     fase_partido = models.CharField(max_length=100, blank=True, null=True)
 
+class Evento(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE, related_name='eventos')
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=100)
 
 class Gol_local(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
