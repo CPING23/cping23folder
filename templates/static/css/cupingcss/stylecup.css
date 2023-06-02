@@ -1,12 +1,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
-
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
   box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
-
+overflow-x: auto;
 }
+@media screen and (max-width: 700px){
+    table{
+        display: block;
+        overflow-x: auto;
+    }
+}
+.columnaabsolute{
+ position: sticky;
+  left: 0;
+  z-index: 1;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #E0DCDC;
+  border-left: 1px solid #E0DCDC;
+  border-right: 1px solid #E0DCDC;
+  border-top: 1px solid #E0DCDC;
+    z-index: 2;
+}
+th{
+    background-color: gray;
+    color: whitesmoke;
+}
+td{
+    background-color: #FDFDFEFF;
+}
+tr:hover {
+  background-color: whitesmoke;
+}
+
 
 @media screen and (max-width: 600px){
 	.containerp	{
@@ -132,7 +161,6 @@ tr:hover {
   box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
 }
 
-
 *,
 *:after,
 *:before {
@@ -156,11 +184,11 @@ select,
 textarea {
 	font: inherit;
 }
-​
+
 .img-stylecup {
 	display: block;
 }
-​
+
 strong {
 	font-weight: 600;
 }
@@ -180,7 +208,7 @@ body {
 	width: 600px;
 	border-radius: 10px;
 	box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
-​
+
 }
 
 .match-header {
