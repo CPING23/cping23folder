@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
+
 
 class Equipo(models.Model):
     nombre = models.CharField(max_length=100)
@@ -18,11 +20,69 @@ class Partido(models.Model):
     partido_numero = models.CharField(max_length=100, blank=True, null=True)
     fase_partido = models.CharField(max_length=100, blank=True, null=True)
 
-class Evento(models.Model):
-    partido = models.ForeignKey(Partido, on_delete=models.CASCADE, related_name='eventos')
+def get_absolute_url(self):
+        return reverse('resumen', kwargs={'pk': self.pk})
+
+
+
+class Evento_redcard_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     minuto = models.PositiveIntegerField()
     tipo = models.CharField(max_length=100)
-    jugadores = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+
+class Evento_redcard_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+class Evento_yllwcard_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+
+class Evento_yllwcard_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+class Evento_gol_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+
+class Evento_gol_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+
+class Evento_cambio_local(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+class Evento_cambio_visitante(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
+
+
+class Evento(models.Model):
+    partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
+    minuto = models.PositiveIntegerField()
+    tipo = models.CharField(max_length=100)
+    jugadores = models.CharField(max_length=150)
 
 class Gol_local(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)

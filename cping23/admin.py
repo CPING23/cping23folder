@@ -5,6 +5,7 @@ from .models import *
 admin.site.register(Equipo)
 admin.site.register(Partido)
 admin.site.register(Gol_local)
+admin.site.register(Evento)
 admin.site.register(Gol_visitante)
 admin.site.register(Tarjetaroja_local)
 admin.site.register(Tarjetaroja_visitante)
