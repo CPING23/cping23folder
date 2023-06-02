@@ -28,7 +28,7 @@
     <table id="tabla-posiciones" >
         <thead>
             <tr>
-                <th>&nbsp;&nbsp;&nbsp;EQUIPO</th>
+                <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;EQUIPO</th>
                 <th>PUNTOS</th>
                 <th>PJ</th>
                 <th>PG</th>
@@ -42,7 +42,7 @@
         <tbody>
             {% for posicion in posiciones %}
                 <tr>
-                    <td ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">{{ posicion.equipo.nombre }}</td>
+                    <td class="columnaabsolute" ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">{{ posicion.equipo.nombre }}</td>
                     <td >{{ posicion.puntos }}</td>
                     <td>{{ posicion.partidos_jugados }}</td>
                     <td>{{ posicion.partidos_ganados }}</td>
