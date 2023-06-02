@@ -3,25 +3,84 @@
 table {
   width: 100%;
   border-collapse: collapse;
-
+  background-color: white;
   box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
-overflow-x: auto;
+
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 600px){
+	.containerp	{
+		width: 80%; !important;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.match{
+		width: 90% !important;
+	}
+	.match-header > .match-actions{
+		font-size: 9px;
+	}
+	.match-header > .match-status{
+		display: flex;
+	    align-items: center;
+		justify-content: center;
+		padding: 6px 0px 6px 0px;
+	    font-size: 9px; !important;
+		margin-right: auto;
+		width: 18%;
+	}
+	.match-header{
+		font-size: 10px;
+	}
+	.match-header > .match-tournament{
+		margin-left: unset; !important;
+	}
+	.match-actions > .btn-icon{
+		padding: 3px;
+	}
+	.match-tournament > .img-stylecup{
+		height: 29px;
+		width: 30px;
+	}
+	.team > .team-logo {
+		width: 60px;
+		height: 60px;
+		box-shadow: 0 4px 4px 0 rgba(48, 48, 48, 0.15), 0 0 0 10px var(--color-bg-secondary);
+	}
+	.team > .team-name{
+		display: block;
+		font-size: 12px;
+	}
+	.team > .match-time-lapsed{
+		text-align: start;
+		font-size: 8px;
+	}
+	.match-details > .match-date{
+		font-size: 8px;
+	}
+	.match-score > .match-score-number{
+		font-size: 30px;
+	}
+	.match-details > .match-referee{
+		font-size: 8px;
+	}
+	.match-details > .match-bet-place {
+	padding: 8px 28px; !important;
+	font-size: 12px;
+}
+
+	/*.match-content {
+		align-items: center;
+		flex-direction: column;
+	}
+	.column{
+		padding: 15px; !important;
+	}*/
     table{
         display: block;
         overflow-x: auto;
-
     }
-
-}
-
-.columnaabsolute{
- position: sticky;
-  left: 0;
-  z-index: 1;
-
 }
 th, td {
   padding: 8px;
@@ -30,26 +89,15 @@ th, td {
   border-left: 1px solid #E0DCDC;
   border-right: 1px solid #E0DCDC;
   border-top: 1px solid #E0DCDC;
-	z-index: 2;
-
 }
-
-
-
 
 th{
     background-color: gray;
     color: whitesmoke;
-
-}
-td{
-	background-color: #FDFDFEFF;
 }
 tr:hover {
   background-color: whitesmoke;
 }
-
-
 
 .h3-stylecup{
   text-align: center;
@@ -66,11 +114,10 @@ tr:hover {
     height: 30px;
     margin-right: 20px;
     margin-left: 10px;
-
 }
 
 .redcard-icon {
-  font-size: 10px, 10px;
+  font-size: 10px;
   color: red;
   background-color: red;
   border-radius: 2px;
@@ -78,7 +125,7 @@ tr:hover {
 }
 
 .yellowcard-icon {
-  font-size: 10px, 10px;
+  font-size: 10px;
   color: yellow;
   background-color: yellow;
   border-radius: 2px;
@@ -109,11 +156,11 @@ select,
 textarea {
 	font: inherit;
 }
-
+​
 .img-stylecup {
 	display: block;
 }
-
+​
 strong {
 	font-weight: 600;
 }
@@ -126,13 +173,14 @@ body {
 }
 
 .match {
+	height: auto;
 	background-color: var(--color-bg-primary);
 	display: flex;
 	flex-direction: column;
-	min-width: 600px;
+	width: 600px;
 	border-radius: 10px;
 	box-shadow: 0 0 2px 0 rgba(48, 48, 48, 0.1), 0 4px 4px 0 rgba(48, 48, 48, 0.1);
-
+​
 }
 
 .match-header {
@@ -164,17 +212,17 @@ body {
 	margin-right: 8px;
 }
 
-
 .match-tournament {
 	display: flex;
+	justify-content: center;
 	align-items: center;
 	font-weight: 600;
+	margin-left: 30px;
 }
 
 .match-tournament > .img-stylecup{
-	width: 40px;
-	margin-right: 50px;
-
+	max-width: 40px;
+	margin-right: 10px;
 }
 
 .match-actions {
@@ -196,21 +244,28 @@ body {
 	position: relative;
 }
 
-.column {
-	padding: 32px;
+.column-match-details{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: calc(100% / 3);
+	width: calc(100% / 1);
+}
+.column {
+	padding-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% / 1);
 }
 
 .team {
+	align-self: flex-start;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
 .team-logo {
+	margin: auto;
 	width: 100px;
 	height: 100px;
 	display: flex;
@@ -227,7 +282,6 @@ body {
 	margin-right: 0px;
     margin-left: 0px;
 }
-
 
 .team-name {
 	text-align: center;
@@ -276,8 +330,6 @@ body {
 	margin-right: 10px;
 }
 
-
-
 .match-time-lapsed {
 	color: black;
 	font-size: 14px;
@@ -295,7 +347,7 @@ body {
 	padding-bottom: 12px;
 }
 
-.match-bet-option {
+/*.match-bet-option {
 	margin-left: 4px;
 	margin-right: 4px;
 	border: 1px solid var(--color-text-icon);
@@ -305,7 +357,7 @@ body {
 	font-size: 14px;
 	font-weight: 600;
 	padding: 4px 8px;
-}
+}*/
 
 .match-bet-place {
 	position: absolute;
