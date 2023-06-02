@@ -1,0 +1,66 @@
+{% include "cabecera.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla de Posiciones Femenino</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cupingcss/stylecup.css' %}">
+</head>
+<body>
+
+     <!-- Breadcrumb section -->
+	<div class="site-breadcrumb">
+
+	</div>
+	<!-- Breadcrumb section end -->
+    <div class="container">
+    <ol class="breadcrumb" style="background-color: transparent;">
+      <li class="breadcrumb-item" ><a href="/" style="color: black"><i class="fa fa-home" style="color: black"></i> Inicio</a> </li>
+      <li class="breadcrumb-item active">Tabla de Posiciones</li>
+    </ol>
+    </div>
+
+
+    <section class="full-courses-section spad pt-0">
+    <div class="container">
+    <h3 class="h3-stylecup">TABLA DE POSICIONES - COPA INGE 2023</h3>
+
+    <table id="tabla-posiciones" >
+        <thead>
+            <tr>
+                <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;EQUIPO</th>
+                <th>PUNTOS</th>
+                <th>PJ</th>
+                <th>PG</th>
+                <th>PE</th>
+                <th>PP</th>
+                <th>GF</th>
+                <th>GC</th>
+                <th >DG</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for posicion in posiciones %}
+                <tr>
+                    <td class="columnaabsolute" ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">{{ posicion.equipo.nombre }}</td>
+                    <td >{{ posicion.puntos }}</td>
+                    <td>{{ posicion.partidos_jugados }}</td>
+                    <td>{{ posicion.partidos_ganados }}</td>
+                    <td>{{ posicion.partidos_empatados }}</td>
+                    <td>{{ posicion.partidos_perdidos }}</td>
+                    <td>{{ posicion.goles_favor }}</td>
+                    <td>{{ posicion.goles_contra }}</td>
+                    <td >{{ posicion.diferencia_goles }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        </div>
+
+    </div>
+    </section>
+
+{% include "pie_pagina.html" %}
+<script src="{% static "js/cupingjs/script.js" %}"></script>
+</body>
+</html>
