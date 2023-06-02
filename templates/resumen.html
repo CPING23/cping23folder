@@ -45,7 +45,7 @@
         <!-- code here -->
         <div class="match">
             <div class="match-header">
-                <div class="match-status">En Vivo</div>
+
                 <div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>
                 <div class="match-actions">
                     <button class="btn-icon"><i class="material-icons-outlined">10</i></button>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            {% for evento in partido.evento_set.all %}
+            {% for evento_cambio_local in partido.evento_cambio_local_set.all %}
             <div class="match-header" style="padding: 0px;">
             </div>
             <div class="match-header">
@@ -112,14 +112,40 @@
 
 
                     <div class="match-time-lapsed" >
-                            <i class="fas fa-square redcard-icon " ></i><span> {{ evento.tipo }}</span>
+                            <i class="fa fa-clock-o " ></i><span> {{ evento_cambio_local.tipo }}</span>
                         </div>
                 <!--<div class="match-status">En Vivo</div>-->
                 <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
                 <div class="match-actions">
                     <button class="btn-icon"><i class="material-icons-outlined">
 
-                                         {{ evento.minuto }}'<br>
+                                         {{ evento_cambio_local.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+
+
+
+        {% endfor %}
+            {% for evento_redcard_local in partido.evento_redcard_local_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fas fa-square redcard-icon " ></i><span> {{ evento_redcard_local.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_redcard_local.minuto }}'<br>
                     </i></button>
                 </div>
 
@@ -130,7 +156,60 @@
 
                 <div class="column">
                      <div class="match-referee" >
-                           <strong>{{ evento.jugadores }} </strong>
+                           <strong>{{ evento_redcard_local.jugadores }} </strong>
+                        </div><br><br>
+                    <div class="match-referee" >
+                           <span>&nbsp;&nbsp; {{ partido.equipo_local.nombre }} #11</span>
+                        </div>
+
+
+                </div>
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div >
+                            {% if partido.equipo_local.imagen %}
+                                    <img src="{{ partido.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                            {% endif %}
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        {% for evento_redcard_visitante in partido.evento_redcard_visitante_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fas fa-square redcard-icon " ></i><span> {{ evento_redcard_visitante.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_redcard_visitante.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+               <div class="match-content">
+
+                <div class="column">
+                     <div class="match-referee" >
+                           <strong>{{ evento_redcard_visitante.jugadores }} </strong>
                         </div><br><br>
                     <div class="match-referee" >
                            <span>&nbsp;&nbsp; {{ partido.equipo_visitante.nombre }} #11</span>
@@ -154,6 +233,244 @@
                     </div>
                 </div>
             </div>
+
+
+        {% endfor %}
+        {% for evento_yllwcard_local in partido.evento_yllwcard_local_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fas fa-square yellowcard-icon " ></i><span> {{ evento_yllwcard_local.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_yllwcard_local.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+               <div class="match-content">
+
+                <div class="column">
+                     <div class="match-referee" >
+                           <strong>{{ evento_yllwcard_local.jugadores }} </strong>
+                        </div><br><br>
+                    <div class="match-referee" >
+                           <span>&nbsp;&nbsp; {{ partido.equipo_local.nombre }} #11</span>
+                        </div>
+
+
+                </div>
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div >
+                            {% if partido.equipo_local.imagen %}
+                                    <img src="{{ partido.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                            {% endif %}
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        {% for evento_yllwcard_visitante in partido.evento_yllwcard_visitante_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fas fa-square yellowcard-icon " ></i><span> {{ evento_yllwcard_visitante.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_yllwcard_visitante.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+               <div class="match-content">
+
+                <div class="column">
+                     <div class="match-referee" >
+                           <strong>{{ evento_yllwcard_visitante.jugadores }} </strong>
+                        </div><br><br>
+                    <div class="match-referee" >
+                           <span>&nbsp;&nbsp; {{ partido.equipo_visitante.nombre }} #11</span>
+                        </div>
+
+
+                </div>
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div >
+                            {% if partido.equipo_visitante.imagen %}
+                                    <img src="{{ partido.equipo_visitante.imagen.url }}" alt="" class="equipo-img">
+                            {% endif %}
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        {% for evento_gol_local in partido.evento_gol_local_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fa fa-soccer-ball-o " ></i><span> {{ evento_gol_local.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_gol_local.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+               <div class="match-content">
+
+                <div class="column">
+                     <div class="match-referee" >
+                           <strong>{{ evento_gol_local.jugadores }} </strong>
+                        </div><br><br>
+                    <div class="match-referee" >
+                           <span>&nbsp;&nbsp; {{ partido.equipo_local.nombre }} #11</span>
+                        </div>
+
+
+                </div>
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div >
+                            {% if partido.equipo_local.imagen %}
+                                    <img src="{{ partido.equipo_local.imagen.url }}" alt="" class="equipo-img">
+                            {% endif %}
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+        {% for evento_gol_visitante in partido.evento_gol_visitante_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fa fa-soccer-ball-o " ></i><span> {{ evento_gol_visitante.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_gol_visitante.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+               <div class="match-content">
+
+                <div class="column">
+                     <div class="match-referee" >
+                           <strong>{{ evento_gol_visitante.jugadores }} </strong>
+                        </div><br><br>
+                    <div class="match-referee" >
+                           <span>&nbsp;&nbsp; {{ partido.equipo_visitante.nombre }} #11</span>
+                        </div>
+
+
+                </div>
+                <div class="column">
+
+                </div>
+                <div class="column">
+                    <div class="team team--away">
+                        <div >
+                            {% if partido.equipo_visitante.imagen %}
+                                    <img src="{{ partido.equipo_visitante.imagen.url }}" alt="" class="equipo-img">
+                            {% endif %}
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+                {% for evento_cambio_visitante in partido.evento_cambio_visitante_set.all %}
+            <div class="match-header" style="padding: 0px;">
+            </div>
+            <div class="match-header">
+
+
+
+                    <div class="match-time-lapsed" >
+                            <i class="fa fa-clock-o " ></i><span> {{ evento_cambio_visitante.tipo }}</span>
+                        </div>
+                <!--<div class="match-status">En Vivo</div>-->
+                <!--<div class="match-tournament"><img class="img-stylecup" src="{% static "image/Logo copa inge png.png" %}" />Copa Inge 2023</div>-->
+                <div class="match-actions">
+                    <button class="btn-icon"><i class="material-icons-outlined">
+
+                                         {{ evento_cambio_visitante.minuto }}'<br>
+                    </i></button>
+                </div>
+
+
+
+            </div>
+
 
 
         {% endfor %}

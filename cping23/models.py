@@ -67,15 +67,13 @@ class Evento_gol_visitante(models.Model):
 
 class Evento_cambio_local(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
-    minuto = models.PositiveIntegerField()
+    minuto = models.DateTimeField(blank=True, null=True)
     tipo = models.CharField(max_length=100)
-    jugadores = models.CharField(max_length=150)
 
 class Evento_cambio_visitante(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
-    minuto = models.PositiveIntegerField()
+    minuto = models.DateTimeField(blank=True, null=True)
     tipo = models.CharField(max_length=100)
-    jugadores = models.CharField(max_length=150)
 
 
 class Evento(models.Model):
@@ -110,7 +108,7 @@ class Tarjetaroja_visitante(models.Model):
     minuto = models.PositiveIntegerField()
 
 
-class Tarjetaamarilla(models.Model):
+class Tarjetaamarilla_local(models.Model):
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
     equipo = models.ForeignKey(Equipo, on_delete=models.CASCADE)
     jugador = models.CharField(max_length=100)
