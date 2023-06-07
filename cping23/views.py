@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Equipo, TablaPosiciones, Partido, Evento
+from .models import Equipo, TablaPosiciones, Partido, Evento, EventoPartido
 
 def tabla_posiciones(request):
+    TablaPosiciones.calcular_posiciones()
     posiciones = TablaPosiciones.objects.order_by('-puntos', '-goles_favor')
 
     context = {
@@ -12,16 +13,25 @@ def tabla_posiciones(request):
 
 def lista_partidos(request):
     partidos = Partido.objects.all()
-    return render(request, 'partidos.html', {'partidos': partidos})
+    evento = Evento.objects.all()
 
+    context={
+        'partidos': partidos,
+        'eventos': evento
+    }
+    return render(request, 'partidos.html',context)
 
 def resumen(request, pk):
     partido = get_object_or_404(Partido, pk=pk)
     partidos = Partido.objects.all()
-    eventos = Evento.objects.all()
+    eventos_partido = EventoPartido.objects.filter(partido=partido)
+    eventos = Evento.objects.filter(partido=partido)
+
     context = {
         'partido': partido,
         'partidos': partidos,
+        'eventos_partido': eventos_partido,
         'eventos': eventos
     }
+
     return render(request, 'resumen.html', context)
