@@ -26,7 +26,7 @@
 </div>
 
 <!-- Newsletter section -->
-	<section class="newsletter-section">
+	<!--<section class="newsletter-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5 col-lg-7">
@@ -35,6 +35,7 @@
 					<p>Suscríbete y recibe las últimas noticias y consejos útiles</p>
 				</div>
 				</div>
+
 				<div class="col-md-7 col-lg-5">
 					<form class="newsletter" method="POST" id="newsletter"> {% csrf_token %}
 						<input name="emailUsuario" id="emailUsuario" type="text" placeholder="Ingresa tu email">
@@ -43,8 +44,74 @@
 				</div>
 			</div>
 		</div>
+	</section>-->
+	<!-- Newsletter section end -->
+    <!-- Newsletter section -->
+	<section class="newsletter-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-lg-7">
+					<div class="section-title mb-md-0" style="padding-top: 30px; padding-bottom: -10px; margin-bottom: -5px">
+					<h3>NEWSLETTER</h3>
+					<p>Suscríbete y recibe las últimas noticias y consejos útiles</p>
+				</div>
+				</div>
+
+				<div class="col-md-7 col-lg-5" style="padding-top: 15px; padding-bottom: -10px">
+
+                                    <!-- Begin Mailchimp Signup Form -->
+                    <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
+                    <div id="mc_embed_signup">
+                        <form action="https://fctunca.us21.list-manage.com/subscribe/post?u=c6ccfd73e21de6aae5be25ee6&amp;id=6cf72bd3bd&amp;f_id=00755ae1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div class="mc-field-group">
+
+                        <input style="border-radius: 10px; padding: 10px" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Ingresa tu email">
+                        <span id="mce-EMAIL-HELPERTEXT" class="helper_text" style="background-color: transparent"></span>
+                    </div>
+                        <div id="mce-responses" class="clear foot" style="background-color: transparent">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_c6ccfd73e21de6aae5be25ee6_6cf72bd3bd" tabindex="-1" value=""></div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" value="SUSCRIBIRME" name="subscribe" id="mc-embedded-subscribe" class="button" style="background-color: #808080; border-radius: 20px; width: 150px; height: 40px; margin-bottom: 30px">
+                                    <p  class="brandingLogo"><a href="http://eepurl.com/isQOJ-" title="Mailchimp - email marketing made easy and fun"><img  src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg" ></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone'; /*
+ * Translated default messages for the $ validation plugin.
+ * Locale: ES
+ */
+$.extend($.validator.messages, {
+  required: "Este campo es obligatorio.",
+  remote: "Por favor, rellena este campo.",
+  email: "Por favor, escribe una dirección de correo válida",
+  url: "Por favor, escribe una URL válida.",
+  date: "Por favor, escribe una fecha válida.",
+  dateISO: "Por favor, escribe una fecha (ISO) válida.",
+  number: "Por favor, escribe un número entero válido.",
+  digits: "Por favor, escribe sólo dígitos.",
+  creditcard: "Por favor, escribe un número de tarjeta válido.",
+  equalTo: "Por favor, escribe el mismo valor de nuevo.",
+  accept: "Por favor, escribe un valor con una extensión aceptada.",
+  maxlength: $.validator.format("Por favor, no escribas más de {0} caracteres."),
+  minlength: $.validator.format("Por favor, no escribas menos de {0} caracteres."),
+  rangelength: $.validator.format("Por favor, escribe un valor entre {0} y {1} caracteres."),
+  range: $.validator.format("Por favor, escribe un valor entre {0} y {1}."),
+  max: $.validator.format("Por favor, escribe un valor menor o igual a {0}."),
+  min: $.validator.format("Por favor, escribe un valor mayor o igual a {0}.")
+});}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+                        </div>
+                    </div>
+                </div>
 	</section>
 	<!-- Newsletter section end -->
+
 	<!-- Footer section -->
 	<footer class="footer-section">
 		<div class="container footer-top">
@@ -152,187 +219,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script>
-        window.CSRF_TOKEN = "{{ csrf_token }}"
-        $("#newsletter").on('submit', function (e) {
-            e.preventDefault()
-            var emailUsuario = $("#emailUsuario").val()
-            if( emailUsuario == ""){
-                Swal.fire({
-                  title: 'Error!',
-                  text: 'Por favor ingrese su correo para subscribirse al newsletter',
-                  type: 'error',
-                  confirmButtonText: 'De Acuerdo'
-                })
-            }else {
-                $.ajax({
-                    url: "/correo",
-                    data: { emailUsuario: emailUsuario,
-                            csrfmiddlewaretoken: window.CSRF_TOKEN
-                    }, //form
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (data) {
-                      if (data.is_taken) {
-                        alert(data.error_message);
-                      }
-                      $("#emailUsuario").val("")
-                      Swal.fire(
-                          'Listo',
-                          'Ya estas subscripto al newsletter!',
-                          'success'
-                      )
-                    }
-                })
-            }
-        })
-
-        $(document).ready(function () {
-            $.ajax({
-                url: "/data_inicial",
-                dataType: 'json',
-                type: 'get',
-                success: function (data) {
-                    if (data.is_taken) {
-                        alert(data.error_message);
-                    }
-                    var posts = JSON.parse(data.posts)
-                    posts.forEach(function(post){
-                        $("#recentPosts").append(
-                            '<li>'+
-                                '<p>' +  post.fields.title + '</p>'+
-                                '<span><i class="fa fa-clock-o"></i>'+ post.fields.published_date + '</span>' +
-                            '</li>'
-                        )
-                    })
-                }
-            })
-        })
-
-
-        window.CSRF_TOKEN = "{{ csrf_token }}"
-        $("#contacto").on('submit', function (e) {
-            e.preventDefault()
-            var contactoUsuario = $("#contactoUsuario").val()
-            var contactoNombre = $("#contactoNombre").val()
-            var contactoAsunto = $("#contactoAsunto").val()
-            var contactoMen = $("#contactoMen").val()
-
-            if( contactoUsuario,
-                contactoNombre,
-                contactoAsunto,
-                contactoMen == ""){
-                Swal.fire({
-                  title: 'Error!',
-                  text: 'Por favor ingrese sus datos en los campos requeridos',
-                  type: 'error',
-                  confirmButtonText: 'De Acuerdo'
-                })
-            }else {
-                $.ajax({
-                    url: "/contacto",
-                    data: { contactoUsuario: contactoUsuario,
-                            contactoNombre: contactoNombre,
-                            contactoAsunto: contactoAsunto,
-                            contactoMen: contactoMen,
-                            csrfmiddlewaretoken: window.CSRF_TOKEN
-                    }, //form
-                    dataType: 'json',
-                    type: 'POST',
-                    success: function (data) {
-                      if (data.is_taken) {
-                        alert(data.error_message);
-                      }
-                      $("#contactoUsuario").val("")
-                      $("#contactoNombre").val("")
-                      $("#contactoAsunto").val("")
-                      $("#contactoMen").val("")
-                      Swal.fire(
-                          'Listo',
-                          'Se envio su consulta!',
-                          'success'
-                      )
-                    }
-                })
-            }
-        })
-
-
-
-        $("#buscarBtn").on("click", function () {
-            const buscar = $("#buscarBtn").val()
-            location.href = "/busqueda" + buscar.split(" ").join("+")
-        })
-
-
-        var btn = $('#button');
-
-        $(window).scroll(function() {
-          if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-          } else {
-            btn.removeClass('show');
-          }
-        });
-
-        btn.on('click', function(e) {
-          e.preventDefault();
-          $('html, body').animate({scrollTop:0}, '300');
-        });
-
-        jQuery(document).ready(function() {
-                function count($this){
-                var current = parseInt($this.html(), 10);
-                current = current + 1; /* Where 1 is increment */
-
-                $this.html(++current);
-                if(current > $this.data('count')){
-                    $this.html($this.data('count'));
-                } else {
-                    setTimeout(function(){count($this)}, 50);
-                }
-            }
-
-            jQuery(".stat-count").each(function() {
-              jQuery(this).data('count', parseInt(jQuery(this).html(), 10));
-              jQuery(this).html('0');
-              count(jQuery(this));
-            });
-        });
-
-        const hamburger = document.querySelector(".hamburger");
-        const navLink = document.querySelector(".nav-link");
-        const links = document.querySelectorAll(".nav-link li");
-
-        hamburger.addEventListener('click', ()=>{
-           //Animate Links
-            navLink.classList.toggle("open");
-            links.forEach(link => {
-                link.classList.toggle("fade");
-            });
-
-        //Hamburger Animation
-        hamburger.classList.toggle("toggle");
-        });
-
-
-    </script>
+    <script src="{% static "js/hamburger.js" %}"></script>
+    <script src="{% static "js/newsletter.js" %}"></script>
+    <script src="{% static "js/contact.js" %}"></script>
+    <script src="{% static "js/posts.js" %}"></script>
     <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('off/service-worker.js')
-            .then(function(registration) {
-              console.log('Service Worker registrado con éxito:', registration);
-            })
-            .catch(function(error) {
-              console.log('Error al registrar el Service Worker:', error);
-            });
-        });
-      }
-    </script>
+    <script src="{% static "js/scrolltop.js" %}"></script>
 </body>
 </html>
 
