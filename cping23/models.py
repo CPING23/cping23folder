@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Equipo(models.Model):
     nombre = models.CharField(max_length=100)
@@ -19,7 +21,7 @@ class Partido(models.Model):
     fase_partido = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return f"Partido {self.id}"
+        return f"Partido {self.id} {self.equipo_local} vs {self.equipo_visitante}"
 
     def get_absolute_url(self):
         return reverse('resumen', kwargs={'pk': self.pk})
@@ -27,9 +29,8 @@ class Partido(models.Model):
 
 class EventoPartido(models.Model):
     PARTIDO_EVENT_CHOICES = (
-        ('inicio', 'Inicio del partido'),
-        ('medio_tiempo', 'Medio tiempo'),
-        ('fin', 'Fin del partido'),
+        ('INICIO DEL PARTIDO', 'Inicio del partido'),
+        ('FINAL DEL PARTIDO', 'Fin del partido'),
     )
 
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
@@ -42,12 +43,12 @@ class EventoPartido(models.Model):
 
 class Evento(models.Model):
     PARTIDO_EVENT_CHOICES = (
-        ('gol_local', 'Gol local'),
-        ('gol_visitante', 'Gol visitante'),
-        ('tarjeta_roja_local', 'Tarjeta roja local'),
-        ('tarjeta_roja_visitante', 'Tarjeta roja visitante'),
-        ('tarjeta_amarilla_local', 'Tarjeta amarilla local'),
-        ('tarjeta_amarilla_visitante', 'Tarjeta amarilla visitante'),
+        ('GOOOOL', 'Gol local'),
+        ('GOOOL', 'Gol visitante'),
+        ('TARJETA ROJA', 'Tarjeta roja local'),
+        ('TARJETA ROJA ', 'Tarjeta roja visitante'),
+        ('TARJETA AMARILLA', 'Tarjeta amarilla local'),
+        ('TARJETA AMARILLA ', 'Tarjeta amarilla visitante'),
     )
 
     partido = models.ForeignKey(Partido, on_delete=models.CASCADE)
@@ -76,24 +77,23 @@ class TablaPosiciones(models.Model):
         TablaPosiciones.objects.all().delete()
 
         for equipo in equipos:
-            partidos = Partido.objects.filter(models.Q(equipo_local=equipo) | models.Q(equipo_visitante=equipo))
-            partidos_jugados = partidos.count()
+            partidos_local = Partido.objects.filter(equipo_local=equipo)
+            partidos_visitante = Partido.objects.filter(equipo_visitante=equipo)
+            partidos_jugados = partidos_local.count() + partidos_visitante.count()
 
-            partidos_ganados = partidos.filter(
-                models.Q(goles_local__gt=models.F('goles_visitante')) |
-                models.Q(goles_visitante__gt=models.F('goles_local'))
-            ).count()
+            partidos_ganados = partidos_local.filter(goles_local__gt=models.F('goles_visitante')).count()
+            partidos_ganados += partidos_visitante.filter(goles_visitante__gt=models.F('goles_local')).count()
 
-            partidos_empatados = partidos.filter(goles_local=models.F('goles_visitante')).count()
+            partidos_empatados = partidos_local.filter(goles_local=models.F('goles_visitante')).count()
+            partidos_empatados += partidos_visitante.filter(goles_visitante=models.F('goles_local')).count()
 
             partidos_perdidos = partidos_jugados - partidos_ganados - partidos_empatados
 
-            goles_favor = partidos.filter(
-                models.Q(evento__tipo='gol_local', evento__jugadores=equipo) |
-                models.Q(evento__tipo='gol_visitante', evento__jugadores=equipo)
-            ).count()
+            goles_favor = partidos_local.aggregate(total=models.Sum('goles_local'))['total'] or 0
+            goles_favor += partidos_visitante.aggregate(total=models.Sum('goles_visitante'))['total'] or 0
 
-            goles_contra = goles_favor
+            goles_contra = partidos_local.aggregate(total=models.Sum('goles_visitante'))['total'] or 0
+            goles_contra += partidos_visitante.aggregate(total=models.Sum('goles_local'))['total'] or 0
 
             puntos = partidos_ganados * 3 + partidos_empatados
 
@@ -110,3 +110,7 @@ class TablaPosiciones(models.Model):
                 goles_contra=goles_contra,
                 diferencia_goles=diferencia_goles
             )
+
+@receiver(post_save, sender=Partido)
+def actualizar_tabla_posiciones(sender, instance, **kwargs):
+    TablaPosiciones.calcular_posiciones()

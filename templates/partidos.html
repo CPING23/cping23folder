@@ -76,10 +76,10 @@
                             <h2 class="team-name">{{ partido.equipo_local.nombre }}</h2>
                             <div class="match-time-lapsed">
                                 {% for evento in partido.evento_set.all %}
-                                {% if evento.tipo == 'gol_local' %}
+                                {% if evento.tipo == 'GOOOOL' %}
                                 <i class="fa fa-soccer-ball-o"></i> {{ evento.jugadores }} {{ evento.minuto }}'  <br>
                                 {% endif %}
-                                {% if evento.tipo == 'tarjeta_roja_local' %}
+                                {% if evento.tipo == 'TARJETA ROJA' %}
                                 <i class="fas fa-square redcard-icon"></i> {{ evento.jugadores }} {{ evento.minuto }}'  <br>
                                 {% endif %}
                                 {% endfor %}
@@ -117,10 +117,10 @@
                             <h2 class="team-name">{{ partido.equipo_visitante.nombre }}</h2>
                             <div class="match-time-lapsed">
                                 {% for evento in partido.evento_set.all %}
-                                {% if evento.tipo == 'gol_visitante' %}
+                                {% if evento.tipo == 'GOOOL' %}
                                 <i class="fa fa-soccer-ball-o"></i> {{ evento.jugadores }} {{ evento.minuto }}'  <br>
                                 {% endif %}
-                                {% if evento.tipo == 'tarjeta_roja_visitante' %}
+                                {% if evento.tipo == 'TARJETA ROJA ' %}
                                 <i class="fas fa-square redcard-icon"></i> {{ evento.jugadores }} {{ evento.minuto }}'  <br>
                                 {% endif %}
                                 {% endfor %}

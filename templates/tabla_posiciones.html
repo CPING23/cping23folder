@@ -25,36 +25,41 @@
     <div class="container">
     <h3 class="h3-stylecup">TABLA DE POSICIONES - COPA INGE 2023</h3>
 
-    <table id="tabla-posiciones" >
-        <thead>
+<table id="tabla-posiciones">
+    <thead>
+        <tr>
+            <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;EQUIPO</th>
+            <th>PUNTOS</th>
+            <th>PJ</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
+            <th>GF</th>
+            <th>GC</th>
+            <th>DG</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for posicion in posiciones %}
             <tr>
-                <th class="columnaabsolute">&nbsp;&nbsp;&nbsp;EQUIPO</th>
-                <th>PUNTOS</th>
-                <th>PJ</th>
-                <th>PG</th>
-                <th>PE</th>
-                <th>PP</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th >DG</th>
+                <td class="columnaabsolute">
+                    <img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">
+                    {{ posicion.equipo.nombre }}
+                </td>
+                <td>{{ posicion.puntos }}</td>
+                <td>{{ posicion.partidos_jugados }}</td>
+                <td>{{ posicion.partidos_ganados }}</td>
+                <td>{{ posicion.partidos_empatados }}</td>
+                <td>{{ posicion.partidos_perdidos }}</td>
+                <td>{{ posicion.goles_favor }}</td>
+                <td>{{ posicion.goles_contra }}</td>
+                <td class="{% if posicion.diferencia_goles > 0 %}green{% elif posicion.diferencia_goles < 0 %}red{% endif %}">
+                    {{ posicion.diferencia_goles }}
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            {% for posicion in posiciones %}
-                <tr>
-                    <td class="columnaabsolute" ><img src="{% static "image/" %}{{ posicion.equipo.imagen }}" alt="" class="equipo-img" style="display: inline">{{ posicion.equipo.nombre }}</td>
-                    <td >{{ posicion.puntos }}</td>
-                    <td>{{ posicion.partidos_jugados }}</td>
-                    <td>{{ posicion.partidos_ganados }}</td>
-                    <td>{{ posicion.partidos_empatados }}</td>
-                    <td>{{ posicion.partidos_perdidos }}</td>
-                    <td>{{ posicion.goles_favor }}</td>
-                    <td>{{ posicion.goles_contra }}</td>
-                    <td >{{ posicion.diferencia_goles }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        {% endfor %}
+    </tbody>
+</table>
 
         </div>
 
