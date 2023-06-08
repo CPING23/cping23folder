@@ -402,6 +402,9 @@ ol {
 }
 /* Estilos para pantallas pequeñas */
 @media screen and (max-width: 800px) {
+	.nav-link.hidden {
+		display: none;
+  }
   .navbar ul {
 	margin: -60px;
     flex-direction: column;
