@@ -1,4 +1,4 @@
-{% include "cabecera.html" %}
+{% include "headercping.html" %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -47,8 +47,26 @@
 
     <!-- Código Nuevo -->
     <section class="full-courses-section spad pt-0">
-        <h3 class="h3-stylecup">RESULTADOS DE FÚTBOL</h3>
+        <h3 class="h3-stylecup">RESULTADOS DE LA COPA INGE 2023</h3>
+
+        <div style="text-align: center;">
+            <form method="get">
+                <label for="deporte">Selecciona un deporte:</label>
+                <select id="deporte" name="deporte" style="border-radius: 5px; padding: 8px; ">
+                    <option style="padding-bottom: 5px;" value="FUTBOL_MASCULINO">Fútbol Masculino</option>
+                    <option value="FUTBOL_FEMENINO">Fútbol Femenino</option>
+                    <option value="BASKET_MASCULINO">Basketball Masculino</option>
+                    <option value="BASKET_FEMENINO">Basketball Femenino</option>
+                    <option value="FIFA23">FIFA23</option>
+                    <!-- Agrega las opciones para los demás deportes -->
+                </select>&nbsp;&nbsp;&nbsp;
+                <button type="submit" style="border-radius: 8px; background-color: #808080; color: white; padding: 8px; box-shadow: none; border: none;">Mostrar resultados</button>
+            </form>
+        </div><br>
+
         <div class="containerp">
+
+
             <!-- code here -->
             <div class="match">
                 <div class="match-header">
@@ -64,7 +82,9 @@
                         <button class="btn-icon"><i class="material-icons-outlined">2023</i></button>
                     </div>
                 </div>
+
                 {% for partido in partidos %}
+
                 <div class="match-content">
                     <div class="column">
                         <div class="team team--home">
@@ -92,9 +112,11 @@
                                 <strong>{{ partido.fecha }}</strong>
                             </div>
                             <div class="match-score">
+
                                 <span class="match-score-number">{{ partido.goles_local }}</span>
                                 <span class="match-score-divider">:</span>
                                 <span class="match-score-number">{{ partido.goles_visitante }}</span>
+
                             </div>
                             <div class="match-referee">
                                 {{ partido.partido_numero }}: <strong>{{ partido.fase_partido }}</strong>
@@ -129,9 +151,12 @@
                     </div>
                 </div>
                 <br><br>
+
                 {% endfor %}
             </div>
+
         </div>
+
     </section>
 
     {% include "pie_pagina.html" %}

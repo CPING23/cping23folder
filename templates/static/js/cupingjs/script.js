@@ -24,3 +24,5 @@ for (var i = 0; i < elementosTiempo.length; i++) {
     elementosTiempo[i].innerHTML = '<i class="fas fa-square redcard-icon"></i>' + elementosTiempo[i].innerHTML;
   }
 }
+
+

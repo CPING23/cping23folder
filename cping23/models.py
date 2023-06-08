@@ -10,15 +10,30 @@ class Equipo(models.Model):
     def __str__(self):
         return self.nombre
 
-
 class Partido(models.Model):
+    DEPORTE_CHOICES = (
+        ('FUTBOL_MASCULINO', 'Fútbol Masculino'),
+        ('FUTBOL_FEMENINO', 'Fútbol Femenino'),
+        ('BASKET_MASCULINO', 'Básquet Masculino'),
+        ('BASKET_FEMENINO', 'Básquet Femenino'),
+        ('VOLLEY_MASCULINO', 'Vóley Masculino'),
+        ('VOLLEY_FEMENINO', 'Vóley Femenino'),
+        ('PIKI', 'Piki'),
+        ('FIFA23', 'FIFA 23'),
+        ('PING_PONG', 'Ping Pong'),
+        ('POKER', 'Poker'),
+        ('AJEDREZ', 'Ajedrez'),
+        ('TRUCO', 'Truco'),
+    )
+
     equipo_local = models.ForeignKey(Equipo, on_delete=models.CASCADE, related_name='partidos_local')
     equipo_visitante = models.ForeignKey(Equipo, on_delete=models.CASCADE, related_name='partidos_visitante')
-    goles_local = models.PositiveIntegerField()
-    goles_visitante = models.PositiveIntegerField()
-    fecha = models.DateTimeField( blank=True, null=True)
+    goles_local = models.PositiveIntegerField(blank=True, null=True)
+    goles_visitante = models.PositiveIntegerField(blank=True, null=True)
+    fecha = models.DateTimeField(blank=True, null=True)
     partido_numero = models.CharField(max_length=100, blank=True, null=True)
-    fase_partido = models.CharField(max_length=100, blank=True, null=True)
+    fase_partido = models.CharField(max_length=99, blank=True, null=True)
+    deporte = models.CharField(max_length=50, choices=DEPORTE_CHOICES, blank=True, null=True)
 
     def __str__(self):
         return f"Partido {self.id} {self.equipo_local} vs {self.equipo_visitante}"
