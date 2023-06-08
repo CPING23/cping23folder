@@ -138,12 +138,11 @@
                 </div>
 
                 <div class="match-content">
-                    <div class="column">
-                        <div class="match-referee">
+                    <div class="column-resumen">
+                        <div class="match-referee-resumen">
                             <strong>{{ evento.jugadores }}</strong>
                         </div>
-                        <br><br>
-                        <div class="match-referee">
+                        <div class="match-referee-resumen">
                             {% if evento.tipo == 'GOOOOL' or evento.tipo == 'TARJETA ROJA' or evento.tipo == 'TARJETA AMARILLA' %}
                                 <span>&nbsp;&nbsp; {{ partido.equipo_local.nombre }} </span>
                             {% elif evento.tipo == 'GOOOL' or evento.tipo == 'TARJETA ROJA ' or evento.tipo == 'TARJETA AMARILLA ' %}
@@ -151,8 +150,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="column"></div>
-                    <div class="column">
+                    <div class="column-resumen">
                         <div class="team team--away">
                             <div>
                                 {% if evento.tipo == 'GOOOOL' or evento.tipo == 'TARJETA ROJA' or evento.tipo == 'TARJETA AMARILLA' %}
