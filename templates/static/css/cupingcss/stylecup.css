@@ -77,6 +77,24 @@ tr:hover {
 	.match-actions > .btn-icon{
 		padding: 3px;
 	}
+	.column-resumen > .match-referee-resumen{
+		align-self: flex-start;
+		display: flex;
+		font-size: 12px;
+	}
+	.column-resumen{
+		align-items: center;
+		justify-content: center;
+		padding: 15px;
+	    display: flex;
+		flex-direction: column;
+	    width: calc(100% / 1);
+	}
+	.column-resumen > .team{
+		justify-content: center;
+		margin-left: auto;
+		flex-grow: 2;
+	}
 	.match-tournament > .img-stylecup{
 		height: 29px;
 		width: 30px;
@@ -106,7 +124,10 @@ tr:hover {
 	.match-details > .match-bet-place {
 	padding: 8px 28px; !important;
 	font-size: 12px;
-}
+	}
+	.match-content > .column{
+		padding-top: 18px;
+	}
 
 	/*.match-content {
 		align-items: center;
@@ -287,6 +308,17 @@ body {
 	align-items: center;
 	width: calc(100% / 1);
 }
+.column-resumen {
+	padding: 15px;
+	display: flex;
+	margin-left: 10px;
+	justify-content: flex-start;
+	align-items: center;
+	width: calc(100% / 1);
+}
+	.column-resumen > .team{
+		margin-left: auto;
+	}
 .column {
 	padding-top: 30px;
 	display: flex;
@@ -373,7 +405,9 @@ body {
 	font-weight: 600;
 	margin-top: 8px;
 }
-
+.match-referee-resumen {
+	margin-top: 12px;
+}
 .match-referee {
 	margin-top: 12px;
 }
