@@ -14,12 +14,14 @@ def tabla_posiciones(request):
 def lista_partidos(request):
     partidos = Partido.objects.all()
     evento = Evento.objects.all()
+    eventopartido = EventoPartido.objects.all()
 
     context={
         'partidos': partidos,
-        'eventos': evento
+        'eventos': evento,
+        'eventopartido': eventopartido,
     }
-    return render(request, 'partidos.html',context)
+    return render(request, 'partidos.html', context)
 
 def resumen(request, pk):
     partido = get_object_or_404(Partido, pk=pk)
